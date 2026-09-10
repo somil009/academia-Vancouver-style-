@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl"
+       version="1.0" class="in-text" default-locale="en-US"
+       page-range-format="minimal">
+  <info>
+    <title>Academia Journals - Modified Vancouver</title>
+    <title-short>Academia - Vancouver</title-short>
+    <id>http://www.zotero.org/styles/academia-journals-modified-vancouver</id>
+    <link href="http://www.zotero.org/styles/academia-journals-modified-vancouver" rel="self"/>
+    <category citation-format="numeric"/>
+    <category field="science"/>
+    <summary>Modified Vancouver style based on the Academia Word Submission Template.</summary>
+    <updated>2026-09-10T00:00:00+00:00</updated>
+  </info>
+
+  <macro name="author">
+    <names variable="author">
+      <name name-as-sort-order="all" sort-separator=" "
+            initialize-with="" delimiter=", "
+            delimiter-precedes-last="always"
+            et-al-min="6" et-al-use-first="5"/>
+      <substitute><names variable="editor"/></substitute>
+    </names>
+  </macro>
+
+  <macro name="journal">
+    <text variable="container-title" form="short"/>
+  </macro>
+
+  <macro name="date">
+    <date variable="issued"><date-part name="year"/></date>
+  </macro>
+
+  <macro name="journal-details">
+    <group delimiter=" ">
+      <text macro="journal"/>
+      <group delimiter=";">
+        <text macro="date"/>
+        <group delimiter="">
+          <text variable="volume"/>
+          <text variable="issue" prefix="(" suffix=")"/>
+        </group>
+      </group>
+    </group>
+  </macro>
+
+  <macro name="pages">
+    <choose>
+      <if variable="page"><text variable="page"/></if>
+      <else-if variable="number"><text variable="number"/></else-if>
+    </choose>
+  </macro>
+
+  <macro name="doi">
+    <choose>
+      <if variable="DOI"><text variable="DOI" prefix=" doi:"/></if>
+    </choose>
+  </macro>
+
+  <citation collapse="citation-number">
+    <sort><key variable="citation-number"/></sort>
+    <layout prefix="[" suffix="]" delimiter=",">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+
+  <bibliography et-al-min="6" et-al-use-first="5"
+                second-field-align="flush">
+    <layout suffix=".">
+      <text variable="citation-number" suffix=". "/>
+      <text macro="author" suffix=". "/>
+      <text variable="title" suffix=". "/>
+      <text macro="journal-details"/>
+      <text macro="pages" prefix=":"/>
+      <text macro="doi"/>
+    </layout>
+  </bibliography>
+</style>
